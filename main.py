@@ -26,7 +26,7 @@ async def func(chatdata):
     
     for c in chatdata.items:
         message = c.message.lower()
-        if msg in "up down enter h left right space".split():
+        if message in "up down enter h left right space".split():
             print(f"{c.author.name} had pressd {message.upper()}!")
             pydirectinput.keyDown(message)
             pydirectinput.keyUp(message)
