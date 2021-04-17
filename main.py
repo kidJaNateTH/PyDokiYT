@@ -25,41 +25,17 @@ async def main():
 async def func(chatdata):
     
     for c in chatdata.items:
-        if(c.message.lower() == "up"):
-            print(f"{c.author.name} had pressd UP!")
-            pydirectinput.keyDown("up")
-            pydirectinput.keyUp("up")
-        if(c.message.lower() == "down"):
-            print(f"{c.author.name} had pressd DOWN!")
-            pydirectinput.keyDown("down")
-            pydirectinput.keyUp("down")
-        if(c.message.lower() == "enter"):
-            print(f"{c.author.name} had pressd ENTER!")
-            pydirectinput.keyDown("enter")
-            pydirectinput.keyUp("enter")
-        if(c.message.lower() == "h"):
-            print(f"{c.author.name} had pressd H!")
-            pydirectinput.keyDown("h")
-            pydirectinput.keyUp("h")
-        if(c.message.lower() == "left"):
-            print(f"{c.author.name} had pressd LEFT!")
-            pydirectinput.keyDown("left")
-            pydirectinput.keyUp("left")
-        if(c.message.lower() == "right"):
-            print(f"{c.author.name} had pressd RIGHT!")
-            pydirectinput.keyDown("right")
-            pydirectinput.keyUp("right")
-        if(c.message.lower() == "space"):
-            print(f"{c.author.name} had pressd SPACE!")
-            pydirectinput.keyDown("space")
-            pydirectinput.keyUp("space")
+        message = c.message.lower()
+        if message in "up down enter h left right space".split():
+            print(f"{c.author.name} had pressd {message.upper()}!")
+            pydirectinput.keyDown(message)
+            pydirectinput.keyUp(message)
         await chatdata.tick_async()
 
 
 def checkVersion():
     os.system("color 0")
     print("Starting : checking version...")
-
 
     thisVersion = "1.0"
     version = requests.get("https://pastebin.com/raw/74nyUZfr")
@@ -80,8 +56,5 @@ def checkVersion():
         os.system("pause")
 
 
-
 if __name__ == '__main__':
     checkVersion()
-    
-
